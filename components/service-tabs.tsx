@@ -26,11 +26,16 @@ interface ServiceTabsProps {
 }
 
 export function ServiceTabs({ services, className }: ServiceTabsProps) {
-  const [activeTab, setActiveTab] = useState(services[0]?.id || "")
+  const defaultTabId = services && services.length > 0 ? services[0].id : ""
+  const [activeTab, setActiveTab] = useState(defaultTabId)
+
+  if (!services || services.length === 0) {
+    return null
+  }
 
   return (
     <Tabs
-      defaultValue={services[0]?.id}
+      defaultValue={defaultTabId}
       value={activeTab}
       onValueChange={setActiveTab}
       className={cn("w-full", className)}
@@ -63,12 +68,12 @@ export function ServiceTabs({ services, className }: ServiceTabsProps) {
               </ul>
 
               <div className="pt-4">
-                <Link href="/contact">
-                  <Button>
+                <Button asChild>
+                  <Link href="/contact">
                     Request a Consultation
                     <ArrowRight className="ml-2 h-4 w-4" />
-                  </Button>
-                </Link>
+                  </Link>
+                </Button>
               </div>
             </div>
 

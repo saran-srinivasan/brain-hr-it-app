@@ -42,7 +42,7 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 flex justify-between items-center">
         <Link href="/" className="flex items-center space-x-2">
-          <span className="font-heading text-2xl font-bold text-primary">TechTalent</span>
+          <span className="font-heading text-2xl font-bold text-primary">Brain HR IT solutions</span>
         </Link>
 
         {/* Desktop Navigation */}

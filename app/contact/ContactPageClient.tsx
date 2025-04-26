@@ -14,6 +14,7 @@ import { Facebook, Twitter, Linkedin, Instagram, Mail, Phone, MapPin, Send, Chec
 
 export default function ContactPageClient() {
   const [formState, setFormState] = useState<"idle" | "submitting" | "success" | "error">("idle")
+  const [inquiryType, setInquiryType] = useState<string>("")
 
   const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -74,7 +75,7 @@ export default function ContactPageClient() {
 
                     <div className="space-y-2">
                       <Label htmlFor="inquiry">Inquiry Type</Label>
-                      <Select disabled={formState !== "idle"}>
+                      <Select disabled={formState !== "idle"} value={inquiryType} onValueChange={setInquiryType}>
                         <SelectTrigger id="inquiry">
                           <SelectValue placeholder="Select an inquiry type" />
                         </SelectTrigger>
